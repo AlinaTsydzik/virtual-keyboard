@@ -16,11 +16,12 @@ body {
 }
 
 .keyboard-container {
+  position: relative;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   padding: 5px;
-  max-width: 1000px;
+  max-width: 850px;
   height: 320px;
   background: linear-gradient(180deg, #f3f3f3, #d7d7d7);
   border: 1px solid #ececec;
@@ -36,11 +37,100 @@ body {
   height: 50px;
   border: 1px solid transparent;
   border-radius: 6px;
-  background: linear-gradient(181deg, #f7f7f7, #d7d7d7) padding-box, linear-gradient(270deg, #d7d7d7, #f7f7f7 12%) border-box;
-  font-size: 1.2rem;
-  font-weight: 600;
+  background: linear-gradient(181deg, #f7f7f7, #d7d7d7) padding-box, linear-gradient(270deg, #f1f1f1, #d7d7d7, #f7f7f7 12%) border-box;
+  font-size: 16px;
   color: #646464;
   margin: 2px;
+}
+
+.btn:hover,
+.btn:active,
+.btn.active {
+  background: #f8bd26;
+  color: #ffffff;
+  box-shadow: 0 0 2px 4px rgba(253, 250, 236, 0.7);
+}
+
+.btn-id13 {
+  width: 100px;
+  background: linear-gradient(180deg, #e7e7e7, #959595) padding-box, linear-gradient(180deg, #f1f1f1, #d7d7d7, #f7f7f7 12%) border-box;
+}
+
+.btn-id14,
+.btn-id27 {
+  width: 90px;
+  background: linear-gradient(180deg, #e7e7e7, #959595) padding-box, linear-gradient(180deg, #f1f1f1, #d7d7d7, #f7f7f7 12%) border-box;
+}
+
+.btn-id41,
+.btn-id53 {
+  width: 126px;
+  background: linear-gradient(180deg, #e7e7e7, #959595) padding-box, linear-gradient(180deg, #f1f1f1, #d7d7d7, #f7f7f7 12%) border-box;
+}
+
+.btn-id40 {
+  position: absolute;
+  right: 22px;
+  top: 66px;
+  height: 113px;
+  width: 54px;
+  background: linear-gradient(180deg, #e7e7e7, #959595) padding-box, linear-gradient(180deg, #f1f1f1, #d7d7d7, #f7f7f7 12%) border-box;
+}
+
+.btn-id26,
+.btn-id39 {
+  margin-right: 62px;
+}
+
+.btn-id54,
+.btn-id55,
+.btn-id58,
+.btn-id59,
+.btn-id60,
+.btn-id62 {
+  width: 50px;
+  background: linear-gradient(180deg, #e7e7e7, #959595) padding-box, linear-gradient(180deg, #f1f1f1, #d7d7d7, #f7f7f7 12%) border-box;
+}
+
+.btn-id55,
+.btn-id56 {
+  width: 75px;
+  background: linear-gradient(180deg, #e7e7e7, #959595) padding-box, linear-gradient(180deg, #f1f1f1, #d7d7d7, #f7f7f7 12%) border-box;
+}
+
+.btn-id57 {
+  width: 312px;
+}
+
+.btn-id52 {
+  position: absolute;
+  top: 251px;
+  right: 78px;
+  height: 23px;
+  background: linear-gradient(180deg, #e7e7e7, #959595) padding-box, linear-gradient(180deg, #f1f1f1, #d7d7d7, #f7f7f7 12%) border-box;
+}
+
+.btn-id61 {
+  height: 23px;
+  align-self: flex-end;
+  margin-bottom: 10px;
+  background: linear-gradient(180deg, #e7e7e7, #959595) padding-box, linear-gradient(180deg, #f1f1f1, #d7d7d7, #f7f7f7 12%) border-box;
+}
+
+.btn-id14,
+.btn-id27,
+.btn-id41,
+.btn-id52,
+.btn-id53,
+.btn-id54,
+.btn-id55,
+.btn-id56,
+.btn-id58,
+.btn-id59,
+.btn-id60,
+.btn-id61,
+.btn-id62 {
+  font-size: 12px;
 }
 
 /*# sourceMappingURL=style.css.map */

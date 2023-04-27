@@ -26,7 +26,6 @@ const keyCode = [
   'KeyP',
   'BracketLeft',
   'BracketRight',
-  'Delete',
   'CapsLock',
   'KeyA',
   'KeyS',
@@ -80,7 +79,7 @@ const keyValueObj = {
     Digit0: '0',
     Minus: '-',
     Equal: '=',
-    Backspace: 'Backspace',
+    Backspace: '←',
     Tab: 'Tab',
     KeyQ: 'q',
     KeyW: 'w',
@@ -107,7 +106,7 @@ const keyValueObj = {
     Semicolon: ';',
     Quote: '\'',
     Backslash: '\\',
-    Enter: 'Enter',
+    Enter: '↵',
     ShiftLeft: 'Shift',
     KeyZ: 'z',
     KeyX: 'x',
@@ -119,7 +118,7 @@ const keyValueObj = {
     Comma: ',',
     Period: '.',
     Slash: '/',
-    ArrowUp: 'ᐃ',
+    ArrowUp: '▲',
     ShiftRight: 'Shift',
     ControlLeft: 'Ctrl',
     AltLeft: 'Alt',
@@ -127,9 +126,9 @@ const keyValueObj = {
     Space: '',
     CommandRight: 'Cmd',
     AltRight: 'Alt',
-    ArrowLeft: 'ᐊ',
-    ArrowDown: 'ᐁ',
-    ArrowRight: 'ᐅ',
+    ArrowLeft: '◄',
+    ArrowDown: '▼',
+    ArrowRight: '►',
   },
   enCaps: {
     Backquote: '`',
@@ -483,7 +482,7 @@ function createKeyboardLayout() {
 function createKeyboardBtns() {
   for (let i = 0; i < keyCode.length; i += 1) {
     keyboardContainer.insertAdjacentHTML('beforeend', `
-        <button id="${keyCode[i]}" class="btn" data-key="${keyCode[i]}"></button>`);
+        <button id="${keyCode[i]}" class="btn  btn-id${i}" data-key="${keyCode[i]}"></button>`);
   }
   createKeyboardLayout();
 }
