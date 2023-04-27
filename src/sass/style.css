@@ -1,3 +1,130 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #fafafa;
+}
+
+.general-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    min-height: 95vh;
+}
 
 
-/*# sourceMappingURL=style.css.map */
+.textarea {
+    max-width: 1200px;
+    width: 100%;
+    height: 100px;
+    border: solid rgb(100, 100, 100) 2px;
+    font-size: 1.65rem;
+    color: rgb(85, 84, 84);
+    overflow: auto;
+}
+
+.keyboard-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    max-width: 1200px;
+    height: 320px;
+    padding: 5px 0;
+    border: solid rgb(84, 84, 84) 2px;
+    border-radius: 5px;
+    background: rgb(101, 101, 101);
+    
+   
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5.8%;
+    height: calc(20% - 5px);
+    border: solid rgb(86, 85, 85) 2px;
+    border-radius: 5px;
+    background: rgb(251, 251, 251);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: rgb(92, 92, 92);
+}
+
+.btn:active {
+    background: rgba(109, 114, 115, 0.813);
+    color: white;
+    transform: scale(1);
+    box-shadow: 0px 2px 10px 5px rgb(237, 251, 249);
+    transition-property: background, color;
+    transition-duration: .2s;
+    transition-timing-function: ease-out;
+}
+
+.btn.active {
+    background: rgba(109, 114, 115, 0.813);
+    color: white;
+    transform: scale(1);
+    box-shadow: 0px 2px 10px 5px rgb(237, 251, 249);
+    transition-property: background, color;
+    transition-duration: .2s;
+    transition-timing-function: ease-out;
+}
+
+.btn13 {
+    width: 13.4%;
+    background: rgb(200, 200, 200);
+}
+
+.btn14 {
+    width: 7%;
+    background: rgb(200, 200, 200);
+}
+
+.btn28, .btn53, .btn55, .btn56, .btn57, .btn59, .btn60, .btn61, .btn62, .btn63 {
+    background: rgb(200, 200, 200);
+}
+
+.btn29 {
+    width: 12%;
+    background: rgb(200, 200, 200);
+}
+
+.btn29.active {
+    background: rgba(109, 114, 115, 0.813);
+    color: white;
+}
+
+.btn41, .btn42 {
+    width: 13.5%;
+    background: rgb(200, 200, 200);
+}
+
+.btn54 {
+    width: 12%;
+    background: rgb(200, 200, 200);
+}
+
+.btn58 {
+    width: 44.5%;
+}
+
+.btn64, .btn65, .btn66 {
+    display: none;
+}
+
+.text {
+    margin: -20px 0 0; 
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: rgb(100, 100, 100);
+}
+
+.link-text {
+    margin: -20px 0;
+    font-size: 1.2rem;
+}
