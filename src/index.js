@@ -183,7 +183,7 @@ const keyValueObj = {
     Comma: ',',
     Period: '.',
     Slash: '/',
-    ArrowUp: 'ᐃ',
+    ArrowUp: '▲',
     ShiftRight: 'Shift',
     ControlLeft: 'Ctrl',
     AltLeft: 'Alt',
@@ -191,9 +191,9 @@ const keyValueObj = {
     Space: '',
     CommandRight: 'Cmd',
     AltRight: 'Alt',
-    ArrowLeft: 'ᐊ',
-    ArrowDown: 'ᐁ',
-    ArrowRight: 'ᐅ',
+    ArrowLeft: '◄',
+    ArrowDown: '▼',
+    ArrowRight: '►',
   },
 
   enShift: {
@@ -249,7 +249,7 @@ const keyValueObj = {
     Comma: '<',
     Period: '>',
     Slash: '?',
-    ArrowUp: 'ᐃ',
+    ArrowUp: '▲',
     ShiftRight: 'Shift',
     ControlLeft: 'Ctrl',
     AltLeft: 'Alt',
@@ -257,9 +257,9 @@ const keyValueObj = {
     Space: '',
     CommandRight: 'Cmd',
     AltRight: 'Alt',
-    ArrowLeft: 'ᐊ',
-    ArrowDown: 'ᐁ',
-    ArrowRight: 'ᐅ',
+    ArrowLeft: '◄',
+    ArrowDown: '▼',
+    ArrowRight: '►',
   },
 
   ru: {
@@ -315,7 +315,7 @@ const keyValueObj = {
     Comma: 'б',
     Period: 'ю',
     Slash: '/',
-    ArrowUp: 'ᐃ',
+    ArrowUp: '▲',
     ShiftRight: 'Shift',
     ControlLeft: 'Ctrl',
     AltLeft: 'Alt',
@@ -323,9 +323,9 @@ const keyValueObj = {
     Space: '',
     CommandRight: 'Cmd',
     AltRight: 'Alt',
-    ArrowLeft: 'ᐊ',
-    ArrowDown: 'ᐁ',
-    ArrowRight: 'ᐅ',
+    ArrowLeft: '◄',
+    ArrowDown: '▼',
+    ArrowRight: '►',
   },
 
   ruCaps: {
@@ -381,7 +381,7 @@ const keyValueObj = {
     Comma: 'Б',
     Period: 'Ю',
     Slash: '/',
-    ArrowUp: 'ᐃ',
+    ArrowUp: '▲',
     ShiftRight: 'Shift',
     ControlLeft: 'Ctrl',
     AltLeft: 'Alt',
@@ -389,9 +389,9 @@ const keyValueObj = {
     Space: '',
     CommandRight: 'Cmd',
     AltRight: 'Alt',
-    ArrowLeft: 'ᐊ',
-    ArrowDown: 'ᐁ',
-    ArrowRight: 'ᐅ',
+    ArrowLeft: '◄',
+    ArrowDown: '▼',
+    ArrowRight: '►',
   },
 
   ruShift: {
@@ -447,7 +447,7 @@ const keyValueObj = {
     Comma: 'Б',
     Period: 'Ю',
     Slash: '?',
-    ArrowUp: 'ᐃ',
+    ArrowUp: '▲',
     ShiftRight: 'Shift',
     ControlLeft: 'Ctrl',
     AltLeft: 'Alt',
@@ -455,9 +455,9 @@ const keyValueObj = {
     Space: '',
     CommandRight: 'Cmd',
     AltRight: 'Alt',
-    ArrowLeft: 'ᐊ',
-    ArrowDown: 'ᐁ',
-    ArrowRight: 'ᐅ',
+    ArrowLeft: '◄',
+    ArrowDown: '▼',
+    ArrowRight: '►',
   },
 };
 
@@ -468,11 +468,12 @@ document.body.append(mainWrapper);
 mainWrapper.insertAdjacentHTML('afterbegin', `
 <textarea inputmode="text" class="textarea"></textarea>`);
 
+const textarea = document.querySelector('.textarea');
 const keyboardContainer = document.createElement('div');
 keyboardContainer.className = 'keyboard-container';
 mainWrapper.append(keyboardContainer);
 
-const keyboardMode = 'en';
+let keyboardMode = 'en';
 
 function createKeyboardLayout() {
   const keyValue = document.querySelectorAll('.btn');
@@ -487,3 +488,26 @@ function createKeyboardBtns() {
   createKeyboardLayout();
 }
 createKeyboardBtns();
+
+function changeKeyboardLang() {
+  if (keyboardMode === 'en') {
+    keyboardMode = 'ru';
+    localStorage.setItem('mode', 'ru');
+  } else if (keyboardMode === 'ru') {
+    keyboardMode = 'en';
+    localStorage.setItem('mode', 'en');
+  } else if (keyboardMode === 'enCaps') {
+    keyboardMode = 'ruCaps';
+    localStorage.setItem('mode', 'ru');
+  } else if (keyboardMode === 'ruCaps') {
+    keyboardMode = 'enCaps';
+    localStorage.setItem('mode', 'en');
+  }
+  createKeyboardLayout();
+}
+
+document.addEventListener('keydown', (event) => {
+  if (event.metaKey && event.altKey) {
+    changeKeyboardLang();
+  }
+});
