@@ -473,7 +473,8 @@ const keyboardContainer = document.createElement('div');
 keyboardContainer.className = 'keyboard-container';
 mainWrapper.append(keyboardContainer);
 
-let keyboardMode = 'en';
+let keyboardMode = localStorage.getItem('mode');
+if (!keyboardMode) keyboardMode = 'en';
 
 function createKeyboardLayout() {
   const keyValue = document.querySelectorAll('.btn');
