@@ -476,6 +476,8 @@ mainWrapper.append(keyboardContainer);
 let keyboardMode = localStorage.getItem('mode');
 if (!keyboardMode) keyboardMode = 'en';
 
+let capsLockOn = false;
+
 function createKeyboardLayout() {
   const keyValue = document.querySelectorAll('.btn');
 
@@ -488,15 +490,8 @@ function createKeyboardLayout() {
 
 function createKeyboardBtns() {
   for (let i = 0; i < keyCode.length; i += 1) {
-    if (i === 27) {
-        console.log(true);
-      keyboardContainer.insertAdjacentHTML('beforeend', `
-        <button id="${keyCode[i]}" class="btn  btn-id${i}" data-key="${keyCode[i]}"></button>
-        `);
-    } else {
-      keyboardContainer.insertAdjacentHTML('beforeend', `
-        <button id="${keyCode[i]}" class="btn  btn-id${i}" data-key="${keyCode[i]}"></button>`);
-    }
+    keyboardContainer.insertAdjacentHTML('beforeend', `
+    <button id="${keyCode[i]}" class="btn  btn-id${i}" data-key="${keyCode[i]}"></button>`);
   }
   createKeyboardLayout();
 }
@@ -530,15 +525,19 @@ function changeCapsLock() {
   if (keyboardMode === 'en') {
     keyboardMode = 'enCaps';
     capsKey.classList.add('active');
+    capsLockOn = true;
   } else if (keyboardMode === 'ru') {
     keyboardMode = 'ruCaps';
     capsKey.classList.add('active');
+    capsLockOn = true;
   } else if (keyboardMode === 'enCaps') {
     keyboardMode = 'en';
     capsKey.classList.remove('active');
+    capsLockOn = false;
   } else if (keyboardMode === 'ruCaps') {
     keyboardMode = 'ru';
     capsKey.classList.remove('active');
+    capsLockOn = false;
   }
   createKeyboardLayout();
 }
@@ -548,3 +547,33 @@ document.addEventListener('keyup', (event) => {
     changeCapsLock();
   }
 });
+
+function ShiftOn() {
+  if (keyboardMode === 'en') {
+    keyboardMode = 'enShift';
+  } else if (keyboardMode === 'enCaps') {
+    keyboardMode = 'enShift';
+  } else if (keyboardMode === 'ru') {
+    keyboardMode = 'ruShift';
+  } else if (keyboardMode === 'ruCaps') {
+    keyboardMode = 'ruShift';
+  }
+  createKeyboardLayout();
+}
+
+function ShiftOff() {
+  if (keyboardMode === 'enShift' && capsLockOn === false) {
+    keyboardMode = 'en';
+  } else if (keyboardMode === 'ruShift' && capsLockOn === false) {
+    keyboardMode = 'ru';
+  } else if (keyboardMode === 'enShift' && capsLockOn === true) {
+    keyboardMode = 'enCaps';
+  } else if (keyboardMode === 'ruShift' && capsLockOn === true) {
+    keyboardMode = 'ruCaps';
+  }
+  createKeyboardLayout();
+}
+
+const shiftLeftAndRightBtns = document.querySelectorAll('.btn-id41, .btn-id53');
+shiftLeftAndRightBtns.forEach((el) => el.addEventListener('mousedown', ShiftOn));
+shiftLeftAndRightBtns.forEach((el) => el.addEventListener('mouseup', ShiftOff));
