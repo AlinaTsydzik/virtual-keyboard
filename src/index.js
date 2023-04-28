@@ -132,3 +132,14 @@ function animationOff(event) {
 }
 document.addEventListener('keydown', animationOn);
 document.addEventListener('keyup', animationOff);
+
+function focusInTextarea() {
+  textarea.focus();
+}
+focusInTextarea();
+document.addEventListener('click', focusInTextarea);
+document.addEventListener('keydown', focusInTextarea);
+
+document.addEventListener('keydown', (event) => {
+  console.log(event.code);
+});
