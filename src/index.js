@@ -103,8 +103,32 @@ document.addEventListener('keydown', (event) => {
     ShiftOn();
   }
 });
+
 document.addEventListener('keyup', (event) => {
   if (event.code === 'ShiftLeft' || event.code === 'ShiftRight') {
     ShiftOff();
   }
 });
+
+function animationOn(event) {
+  if (event.code === 'CapsLock') return;
+
+  for (let i = 0; i < keyboardCreater.keyCode.length; i += 1) {
+    const keyId = document.getElementById(`${keyboardCreater.keyCode[i]}`);
+    if (event.code === keyId.id) {
+      keyId.classList.add('active');
+    }
+  }
+}
+function animationOff(event) {
+  if (event.code === 'CapsLock') return;
+
+  for (let i = 0; i < keyboardCreater.keyCode.length; i += 1) {
+    const keyId = document.getElementById(`${keyboardCreater.keyCode[i]}`);
+    if (event.code === keyId.id) {
+      keyId.classList.remove('active');
+    }
+  }
+}
+document.addEventListener('keydown', animationOn);
+document.addEventListener('keyup', animationOff);
