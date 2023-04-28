@@ -140,6 +140,53 @@ focusInTextarea();
 document.addEventListener('click', focusInTextarea);
 document.addEventListener('keydown', focusInTextarea);
 
-document.addEventListener('keydown', (event) => {
-  console.log(event.code);
-});
+function addInTextareaOnclick(event) {
+  if (!event.target.classList.contains('btn')) return;
+
+  let currentValue = event.target.textContent;
+  if (event.target.classList.contains('btn-id13')) {
+    currentValue = '';
+    const position = textarea.selectionStart;
+    textarea.value = textarea.value.slice(0, position - 1) + textarea.value.slice(position);
+    textarea.setSelectionRange(position - 1, position - 1);
+  }
+
+  if (event.target.classList.contains('btn-id14')) {
+    currentValue = '    ';
+  }
+
+  if (event.target.classList.contains('btn-id27')) {
+    currentValue = '';
+    changeCapsLock();
+  }
+
+  if (event.target.classList.contains('btn-id40')) {
+    currentValue = '';
+
+    const start = textarea.selectionStart;
+    const end = textarea.selectionEnd;
+    const cursor = `${textarea.value.slice(0, start)}\n`;
+
+    textarea.value = `${textarea.value.slice(0, start)}\n${textarea.value.slice(end, textarea.value.length)}`;
+    textarea.focus();
+    textarea.setSelectionRange(cursor.length, cursor.length);
+  }
+
+  if (event.target.classList.contains('btn-id57')) {
+    currentValue = ' ';
+  }
+
+  if (event.target.classList.contains('btn-id41')
+    || event.target.classList.contains('btn-id53')
+    || event.target.classList.contains('btn-id54')
+    || event.target.classList.contains('btn-id55')
+    || event.target.classList.contains('btn-id56')
+    || event.target.classList.contains('btn-id58')
+    || event.target.classList.contains('btn-id59')
+    || event.target.classList.contains('btn-id63')) {
+    currentValue = '';
+  }
+
+  textarea.value += `${currentValue}`;
+}
+document.addEventListener('click', addInTextareaOnclick);
