@@ -46,6 +46,7 @@ body {
     font-size: 16px;
     color: #646464;
     margin: 2px;
+    transition: all 0.5s;
 }
 
 .btn:hover,
@@ -54,6 +55,7 @@ body {
     background: $bg-active-btn;
     color: #ffffff;
     box-shadow: 0 0 2px 4px rgba(253, 250, 236, 0.7);
+    transition: all 0.5s;
 }
 
 .btn-id13
