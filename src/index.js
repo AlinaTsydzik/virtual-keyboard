@@ -507,7 +507,7 @@ function changeKeyboardLang() {
 }
 
 document.addEventListener('keydown', (event) => {
-  if (event.metaKey && event.altKey) {
+  if (event.altKey && event.ctrlKey) {
     changeKeyboardLang();
   }
 });
