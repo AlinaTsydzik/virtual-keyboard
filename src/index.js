@@ -478,19 +478,31 @@ if (!keyboardMode) keyboardMode = 'en';
 
 function createKeyboardLayout() {
   const keyValue = document.querySelectorAll('.btn');
-  keyValue.forEach((e) => { e.textContent = keyValueObj[keyboardMode][e.dataset.key]; });
+
+  keyValue.forEach((e) => {
+    if (e.classList.contains('btn-id27')) {
+      e.innerHTML = `<span class="btn-led"></span>${keyValueObj[keyboardMode][e.dataset.key]}`;
+    } else e.textContent = keyValueObj[keyboardMode][e.dataset.key];
+  });
 }
 
 function createKeyboardBtns() {
   for (let i = 0; i < keyCode.length; i += 1) {
-    keyboardContainer.insertAdjacentHTML('beforeend', `
+    if (i === 27) {
+        console.log(true);
+      keyboardContainer.insertAdjacentHTML('beforeend', `
+        <button id="${keyCode[i]}" class="btn  btn-id${i}" data-key="${keyCode[i]}"></button>
+        `);
+    } else {
+      keyboardContainer.insertAdjacentHTML('beforeend', `
         <button id="${keyCode[i]}" class="btn  btn-id${i}" data-key="${keyCode[i]}"></button>`);
+    }
   }
   createKeyboardLayout();
 }
 createKeyboardBtns();
 
-function changeKeyboardLang() {
+function changeLang() {
   if (keyboardMode === 'en') {
     keyboardMode = 'ru';
     localStorage.setItem('mode', 'ru');
@@ -509,6 +521,30 @@ function changeKeyboardLang() {
 
 document.addEventListener('keydown', (event) => {
   if (event.altKey && event.ctrlKey) {
-    changeKeyboardLang();
+    changeLang();
+  }
+});
+
+function changeCapsLock() {
+  const capsKey = document.querySelector('.btn-id27');
+  if (keyboardMode === 'en') {
+    keyboardMode = 'enCaps';
+    capsKey.classList.add('active');
+  } else if (keyboardMode === 'ru') {
+    keyboardMode = 'ruCaps';
+    capsKey.classList.add('active');
+  } else if (keyboardMode === 'enCaps') {
+    keyboardMode = 'en';
+    capsKey.classList.remove('active');
+  } else if (keyboardMode === 'ruCaps') {
+    keyboardMode = 'ru';
+    capsKey.classList.remove('active');
+  }
+  createKeyboardLayout();
+}
+
+document.addEventListener('keyup', (event) => {
+  if (event.code === 'CapsLock') {
+    changeCapsLock();
   }
 });

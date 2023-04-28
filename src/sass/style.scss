@@ -34,6 +34,7 @@ body {
 }
 
 .btn {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -137,6 +138,21 @@ body {
 .btn-id62 {
   font-size: 12px;
 }
+
+.btn-led {
+    background-color: #727272;
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    height: 5px;
+    width: 5px;
+    border-radius: 50%;
+}
+
+.btn-id27.active .btn-led{
+  background-color: greenyellow;
+}
+
 
 .textarea {
     max-width: 600px;
