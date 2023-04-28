@@ -97,3 +97,14 @@ function ShiftOff() {
 const shiftLRBtns = document.querySelectorAll('.btn-id41, .btn-id53');
 shiftLRBtns.forEach((el) => el.addEventListener('mousedown', ShiftOn));
 shiftLRBtns.forEach((el) => el.addEventListener('mouseup', ShiftOff));
+
+document.addEventListener('keydown', (event) => {
+  if (event.code === 'ShiftLeft' || event.code === 'ShiftRight') {
+    ShiftOn();
+  }
+});
+document.addEventListener('keyup', (event) => {
+  if (event.code === 'ShiftLeft' || event.code === 'ShiftRight') {
+    ShiftOff();
+  }
+});
