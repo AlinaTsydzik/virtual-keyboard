@@ -19,7 +19,7 @@ if (!keyboardMode) keyboardMode = 'en';
 
 let capsLockOn = false;
 
-keyboardCreater.createKeyboardBtns();
+keyboardCreater.createKeyboardBtns(keyboardMode);
 
 function changeLang() {
   if (keyboardMode === 'en') {
@@ -190,3 +190,36 @@ function addInTextareaOnclick(event) {
   textarea.value += `${currentValue}`;
 }
 document.addEventListener('click', addInTextareaOnclick);
+
+document.onkeydown = (event) => {
+  for (let i = 0; i < keyboardCreater.keyCodeSys.length; i += 1) {
+    if (event.code === `${keyboardCreater.keyCodeSys[i]}`) return true;
+  }
+  return false;
+};
+
+let keyId = '';
+function addCharInTextareaOnPress(event) {
+  for (let i = 0; i < keyboardCreater.keyCodeSys.length; i += 1) {
+    keyId = document.getElementById(`${keyboardCreater.keyCodeSys[i]}`);
+    if (event.code === keyId.id) return;
+  }
+
+  if (event.code === 'Tab') {
+    textarea.value += '    ';
+    return;
+  }
+
+  if (event.code === 'AltLeft' || event.code === 'AltRight') {
+    textarea.value += '';
+    return;
+  }
+
+  for (let i = 0; i < keyboardCreater.keyCode.length; i += 1) {
+    keyId = document.getElementById(`${keyboardCreater.keyCode[i]}`);
+    if (event.code === keyId.id) {
+      textarea.value += keyId.textContent;
+    }
+  }
+}
+document.addEventListener('keydown', addCharInTextareaOnPress);
