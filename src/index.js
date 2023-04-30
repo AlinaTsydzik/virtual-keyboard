@@ -14,6 +14,14 @@ const textarea = document.querySelector('.textarea');
 keyboardCreater.keyboardContainer.className = 'keyboard-container';
 mainWrapper.append(keyboardCreater.keyboardContainer);
 
+mainWrapper.insertAdjacentHTML('beforeend', `
+    <div class="description"><p>Виртуальная клавиатура разработана в Mac OS.</p> 
+    <p>Для переключения языка используется сочетание клавиш <b>Alt + Ctrl</b>.</p>
+    <p>&nbsp;</p>
+    <p class="ps">P.S. в Mac Os одновременное нажатие Shift и CapsLock приводит к вводу прописных (заглавных) букв и специальных символов в верхнем ряду клавиш. В данной клавиатуре был реализован именно этот сценарий, т.к. четких требований задания на этот счет не было. </p>
+    </div>
+    `);
+
 let keyboardMode = localStorage.getItem('mode');
 if (!keyboardMode) keyboardMode = 'en';
 
